@@ -1,0 +1,50 @@
+<div class="col-md-3">
+  <h2>User info</h2>
+  <%= attachment_image_tag current_user, :image %>
+  <table class="table font-weight-bold">
+    <tbody>
+      <tr>
+        <td>name</td>
+        <td><%= current_user.name %></td>
+      </tr>
+      <tr>
+        <td>introduction</td>
+        <td><%= current_user.introduction %></td>
+      </tr>
+    </tbody>
+  </table>
+  <h2>New book</h2>
+  <%= form_with model:@book, local:true do |f| %>
+    <div class="form-group">
+      <label>Title</label>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label>Opinion</label>
+      <%= f.text_area :opinion, class: "form-control" %>
+    </div>
+    <%= f.submit "Create book", class: "btn btn-success" %>
+  <% end %>
+</div>
+
+<div class="col-md-8">
+  <h2>Users</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Image</th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= attachment_image_tag user, :image %></th>
+          <td><%= user.name %></td>
+          <td>show</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
