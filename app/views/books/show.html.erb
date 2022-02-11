@@ -1,0 +1,35 @@
+<div class="col-md-3">
+  <h2>User info</h2>
+  <%= attachment_image_tag current_user, :image %>
+  <table class="table font-weight-bold">
+    <tbody>
+      <tr>
+        <td>name</td>
+        <td><%= current_user.name %></td>
+      </tr>
+      <tr>
+        <td>introduction</td>
+        <td><%= current_user.introduction %></td>
+      </tr>
+    </tbody>
+  </table>
+  <h2>New book</h2>
+  <%= render 'books/form' %>
+</div>
+
+<div class="col-md-8">
+  <h2>Book detail</h2>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td><%= attachment_image_tag @book.user, :image %></th>
+        <td><%= link_to @book.title, book_path(@book) %></td>
+        <td><%= @book.opinion %></td>
+        <% if @book.user === current_user %>
+          <td><%= link_to "edit", edit_book_path(@book), class: "btn btn-success btn-sm" %></td>
+          <td><%= link_to "destroy", book_path(@book), class: "btn btn-danger btn-sm", method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>
