@@ -1,20 +1,6 @@
 <div class="col-md-3">
-  <h2>User info</h2>
-  <%= attachment_image_tag current_user, :image %>
-  <table class="table font-weight-bold">
-    <tbody>
-      <tr>
-        <td>name</td>
-        <td><%= current_user.name %></td>
-      </tr>
-      <tr>
-        <td>introduction</td>
-        <td><%= current_user.introduction %></td>
-      </tr>
-    </tbody>
-  </table>
-  <h2>New book</h2>
-  <%= render 'books/form' %>
+  <%= render 'users/user_info' %>
+  <%= render 'books/new_book' %>
 </div>
 
 <div class="col-md-8">
@@ -32,7 +18,7 @@
         <tr>
           <td><%= attachment_image_tag user, :image %></th>
           <td><%= user.name %></td>
-          <td>show</td>
+          <td><%= link_to "Show", user_path(user) %></td>
         </tr>
       <% end %>
     </tbody>

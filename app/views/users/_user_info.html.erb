@@ -1,0 +1,17 @@
+<h2>User info</h2>
+<%= attachment_image_tag current_user, :image %>
+<table class="table font-weight-bold">
+  <tbody>
+    <tr>
+      <td>name</td>
+      <td><%= current_user.name %></td>
+    </tr>
+    <tr>
+      <td>introduction</td>
+      <td><%= current_user.introduction %></td>
+    </tr>
+  </tbody>
+</table>
+<div class="row">
+  <%= link_to "", edit_user_path(current_user), class: "btn btn-outline-secondary fas fa-user-cog mb-3 w-100" %>
+</div>
