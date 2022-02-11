@@ -7,6 +7,10 @@
       <%= f.text_field :name, class: "form-control" %>
     </div>
     <div class="form-group">
+      <label>Image</label>
+      <%= f.attachment_field :image, class: "form-control-file" %>
+    </div>
+    <div class="form-group">
       <label>Introduction</label>
       <%= f.text_area :introduction, class: "form-control" %>
     </div>
