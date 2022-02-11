@@ -10,7 +10,7 @@
       <tr>
         <td><%= attachment_image_tag @book.user, :image, :fill, 40, 40, fallback: "no_image.jpg" %></td>
         <td><%= link_to @book.title, book_path(@book) %></td>
-        <td><%= @book.opinion %></td>
+        <td><%= @book.body %></td>
         <% if @book.user === current_user %>
           <td><%= link_to "edit", edit_book_path(@book), class: "btn btn-success btn-sm" %></td>
           <td><%= link_to "destroy", book_path(@book), class: "btn btn-danger btn-sm", method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
