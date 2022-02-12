@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @user = current_user
   end
 
   def edit
@@ -12,7 +13,7 @@ class UsersController < ApplicationController
   def update
     user = current_user
     user.update(user_params)
-    redirect_to user_path(user)
+    redirect_to user_path(user), notice: 'successfully'
   end
 
   def show
@@ -23,7 +24,7 @@ class UsersController < ApplicationController
   private
 
   def check_current_user
-    return render_404 unless User.find(params[:id]) == current_user
+    return redirect_to user_path(current_user) unless User.find(params[:id]) == current_user
   end
 
   def user_params
