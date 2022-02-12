@@ -7,8 +7,12 @@ class BooksController < ApplicationController
   end
 
   def create
-    book = current_user.books.create(book_params)
-    redirect_to book_path(book), notice: 'successfully'
+    book = current_user.books.build(book_params)
+    if book.save
+      redirect_to book_path(book), notice: 'successfully'
+    else
+      redirect_to books_path, flash: {danger: book.errors.full_messages.join('<br>')}
+    end
   end
 
   def edit
@@ -16,9 +20,13 @@ class BooksController < ApplicationController
   end
 
   def update
-    book = current_user.books.find(params[:id])
-    book.update(book_params)
-    redirect_to book_path(book), notice: 'successfully'
+    @book = current_user.books.find(params[:id])
+    if @book.update(book_params)
+      redirect_to book_path(@book), notice: 'successfully'
+    else
+       flash.now[:danger] = @book.errors.full_messages.join('<br>')
+      render :edit
+    end
   end
 
   def show

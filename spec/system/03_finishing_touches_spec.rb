@@ -168,7 +168,7 @@ describe '[STEP3] 仕上げのテスト' do
         expect(page).to have_field 'book[body]', with: book.body
       end
       it 'エラーメッセージが表示される' do
-        expect(page).to have_content 'error'
+        expect(page).to have_content "Title can't be blank"
       end
     end
   end

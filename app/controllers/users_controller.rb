@@ -11,9 +11,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = current_user
-    user.update(user_params)
-    redirect_to user_path(user), notice: 'successfully'
+    @user = current_user
+    if @user.update(user_params)
+      redirect_to user_path(@user), notice: 'successfully'
+    else
+      flash.now[:danger] = @user.errors.full_messages.join('<br>')
+      render :edit
+    end
   end
 
   def show

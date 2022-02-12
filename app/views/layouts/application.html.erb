@@ -12,13 +12,7 @@
 
   <body class="d-flex flex-column vh-100">
     <%= render 'layouts/header' %>
-
-    <% flash.each do |key, value| %>
-      <p class="alert alert-<%= key %>">
-        <%= value %>
-      </p>
-    <% end %>
-
+    <%= render 'layouts/flash' %>
     <main id="<%=controller.controller_name%>-<%=controller.action_name%>-container">
       <div class="container">
         <div class="m-3 row">
